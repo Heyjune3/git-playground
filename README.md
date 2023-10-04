@@ -46,7 +46,7 @@ git 다양한 기능 연습하기
 
 'git revert[커밋해시]'
 
-# stash
+## stash
 - 현재 브랜치에서 다른 브랜치로 이동해야 되는 경우 등, 커밋하지 않은 변경사항이 있을 때,
 - 커밋을 하는 대신 임시 저장소에 넣어두는 방법
 - 'git stash'
@@ -54,3 +54,26 @@ git 다양한 기능 연습하기
 - 스태시를 하면 이전 커밋으로 돌아감(워크트리가 깨끗하게 변경됨)
 - 다시 작업 브랜치로 돌아왔을 경우, 원하는 스테시를 우클릭하고, [스태시 적용]
 - 임시 저장된 히스토리의 변경파일들이 복구
+
+## 원격 저장소 (GitHub)에서 pull request 되돌리기 (revert)
+- 되돌려야 하는 PR(pull request) (merge가 완료된)이 있을 경우
+- 깃헙저장소 > pull reqeust > closed
+- 되돌려야하는 PR 선택 후
+- Revert 선택
+- revert를 위한 새로운 PR이 생성됨
+- 새로운 PR을 merge하고 나면 기존 PR이 되돌려진 상태로 복귀
+
+## 브랜치 보호하기
+- branch protection rule
+- GitHub > 저장소 > Setting > Branches
+- > Add branch protection rules
+    - Branch name pattern
+        - (패턴 가능 feature* = 모든 feature 브랜치)
+        - 일반적으로 main 브랜치를 보호
+    - Requires a pull request before merging
+        - 반드시 병합하기 위해서는 PR이 필요
+        - (일반적인 commit & push를 통한 병합은 원격저장소에서 block이 됨)
+        - Requires approvals
+            - PR 병합하기 위해서 반드시 승인이 있어야 하는 Reviewer의 수
+    - 룰을 설정하게 되면 main 브랜치가 보호된다.
+        
